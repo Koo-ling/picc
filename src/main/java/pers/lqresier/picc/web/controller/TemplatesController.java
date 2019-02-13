@@ -12,6 +12,11 @@ public class TemplatesController {
         return "system/main.html";
     }
 
+    @RequestMapping("system/individual")
+    public String systemIndividual(){
+        return "system/individual.html";
+    }
+
     @RequestMapping("system/include/header")
     public String systemIncludeHeader(){
         return "system/include/header.html";

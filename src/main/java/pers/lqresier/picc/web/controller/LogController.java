@@ -21,10 +21,10 @@ public class LogController{
 	private LogService logService;
 
 	@RequestMapping("queryLogByCondition")
-	public String queryLogByCondition(HttpServletRequest request) {
+	public String queryLogByCondition(LogCondition logCondition,HttpServletRequest request) {
 		List<Log> logList =null;
 		try{
-			logList = logService.queryLogByLogCondition(new LogCondition());
+			logList = logService.queryLogByLogCondition(logCondition);
 		}catch (Exception e){
 			logger.debug("查询日志失败");
 			logger.error("查询日志失败");

@@ -177,10 +177,10 @@
             <if test="allocatorName!=null">
                 allocator_name,
             </if>
-            <if test="user.id!=null">
+            <if test="user!=null and user.id!=null">
                 user_id,
             </if>
-            <if test="seg.id!=null">
+            <if test="seg!=null and seg.id!=null">
                 seg_id,
             </if>
         </trim>
@@ -203,10 +203,10 @@
             <if test="allocatorName!=null">
                 #{allocatorName},
             </if>
-            <if test="user.id!=null">
+            <if test="user!=null and user.id!=null">
                 #{user.id},
             </if>
-            <if test="seg.id!=null">
+            <if test="seg!=null and seg.id!=null">
                 #{seg.id},
             </if>
         </trim>
@@ -232,10 +232,10 @@
             <if test="allocatorName!=null">
                 allocator_name=#{allocatorName},
             </if>
-            <if test="user.id!=null">
+            <if test="user!=null and user.id!=null">
                 user_id=#{user.id},
             </if>
-            <if test="seg.id!=null">
+            <if test="seg!=null and seg.id!=null">
                 seg_id=#{seg.id},
             </if>
         </set>

@@ -94,8 +94,9 @@ public class PolicyController {
 //				tip =nameArr[i]+"无单证可用";
                 policyVo.setTip("第" + (i + 1) + "位客户插入失败，原因：无单证可用,请联系管理员");
             } catch (Exception e) {
-                logger.debug(nameArr[i] + "数据库繁忙");
-                logger.error(nameArr[i] + "数据库繁忙");
+                e.printStackTrace();
+                logger.debug(nameArr[i] + "投保失败，数据库繁忙");
+                logger.error(nameArr[i] + "投保失败，数据库繁忙");
 //				tip =nameArr[i]+"数据库繁忙,请联系管理员";
                 policyVo.setTip("第" + (i + 1) + "位客户插入失败，原因：数据库繁忙,请联系管理员");
             } finally {

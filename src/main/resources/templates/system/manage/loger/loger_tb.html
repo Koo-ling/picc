@@ -52,6 +52,11 @@
 				<td th:if="${log.desc!=null and log.desc!=''}" th:text="${log.desc}">${log.desc }</td>
 			</tr>
 		</div>
+		<div th:if="${logList}==null">
+			<tr>
+				<td colspan="5" height="150px">无符合查询条件记录！</td>
+			</tr>
+		</div>
 		</tbody>
 	</table>
 </body>

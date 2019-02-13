@@ -140,29 +140,30 @@
             <if test="status!=null">
                 policy_status,
             </if>
-            <if test="document.id!=null">
+            <if test="document!=null and document.id!=null">
                 document_id,
             </if>
-            <if test="product.id!=null">
+            <if test="product!=null and product.id!=null">
                 product_id,
             </if>
-            <if test="website.id!=null">
+            <if test="website!=null and website.id!=null">
                 website_id,
             </if>
-            <if test="user.id!=null">
+            <if test="user!=null and user.id!=null">
                 user_id,
             </if>
-            <if test="policyHolder.id!=null">
+            <if test="policyHolder!=null and policyHolder.id!=null">
                 policy_holder_id,
             </if>
-            <if test="insured.id!=null">
+            <if test="insured!=null and insured.id!=null">
                 insured_id,
             </if>
-            <if test="beneficiary.id!=null">
+            <if test="beneficiary!=null and beneficiary.id!=null">
                 beneficiary_id,
             </if>
         </trim>
-        <trim prefix="values(" suffixOverrides="," suffix=")">
+        values(
+        <trim suffixOverrides=",">
             <if test="policyCode!=null">
                 #{policyCode},
             </if>
@@ -199,28 +200,29 @@
             <if test="status!=null">
                 #{status},
             </if>
-            <if test="document.id!=null">
+            <if test="document!=null and document.id!=null">
                 #{document.id},
             </if>
-            <if test="product.id!=null">
+            <if test="product!=null and product.id!=null">
                 #{product.id},
             </if>
-            <if test="website.id!=null">
+            <if test="website!=null and website.id!=null">
                 #{website.id},
             </if>
-            <if test="user.id!=null">
+            <if test="user!=null and user.id!=null">
                 #{user.id},
             </if>
-            <if test="policyHolder.id!=null">
+            <if test="policyHolder!=null and policyHolder.id!=null">
                 #{policyHolder.id},
             </if>
-            <if test="insured.id!=null">
+            <if test="insured!=null and insured.id!=null">
                 #{insured.id},
             </if>
-            <if test="beneficiary.id!=null">
+            <if test="beneficiary!=null and beneficiary.id!=null">
                 #{beneficiary.id},
             </if>
         </trim>
+        )
     </insert>
     <update id="update" parameterType="policy">
         update tb_policy
@@ -261,25 +263,25 @@
             <if test="status!=null">
                 policy_status=#{status},
             </if>
-            <if test="document.id!=null">
+            <if test="document!=null and document.id!=null">
                 document_id=#{document.id},
             </if>
-            <if test="product.id!=null">
+            <if test="product!=null and product.id!=null">
                 product_id=#{product.id},
             </if>
-            <if test="website.id!=null">
+            <if test="website!=null and website.id!=null">
                 website_id=#{website.id},
             </if>
             <if test="user.id!=null">
                 user_id=#{user.id},
             </if>
-            <if test="policyHolder.id!=null">
+            <if test="policyHolder!=null and policyHolder.id!=null">
                 policy_holder_id=#{policyHolder.id},
             </if>
-            <if test="insured.id!=null">
+            <if test="insured!=null and insured.id!=null">
                 insured_id=#{insured.id},
             </if>
-            <if test="beneficiary.id!=null">
+            <if test="beneficiary!=null and beneficiary.id!=null">
                 beneficiary_id=#{beneficiary.id},
             </if>
         </set>

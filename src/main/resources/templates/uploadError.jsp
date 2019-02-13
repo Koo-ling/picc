@@ -52,7 +52,7 @@
 		<script type="text/javascript">
 	$(function() {
 		if (window.parent != window) {
-			parent.location.href = "error.jsp";
+			parent.location.href = "error";
 		}
 	});
 </script>

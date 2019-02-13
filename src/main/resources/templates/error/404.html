@@ -1,8 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
-<html>
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,7 +33,7 @@
     </style>
 </head>
 
-<body style="background: url('/res/img/background.png');">
+<body style="background: url('/static/res/img/background.png');">
     <table cellspacing="0" cellpadding="0">
         <tr>
             <td>
@@ -46,7 +43,9 @@
                             <h1>404</h1>
                             <h3>访问失败！</h3>
                             <p>你访问的页面好像不存在或已删除~<br />
-                                <a href="${user.role==0?'system/individual.html':'system/main.html'}">返回首页 ></a>
+                                <a th:if="${session.user}==null" href="/">返回首页&nbsp;&gt;</a>
+                                <a th:if="${session.user}!=null and ${session.user.role}==0" href="/view/system/individual">返回首页&nbsp;&gt;</a>
+                                <a th:if="${session.user}!=null and ${session.user.role}==1" href="/view/system/main">返回首页&nbsp;&gt;</a>
                             </p>
                         </td>
                     </tr>

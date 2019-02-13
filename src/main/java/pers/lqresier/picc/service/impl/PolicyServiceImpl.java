@@ -117,6 +117,7 @@ public class PolicyServiceImpl implements PolicyService {
 		policy.setStatus(1);
 		// 9、更新保单
 		policyMapper.update(policy);
+		policyVo.setResult(true);
 		return policyVo;
 	}
 
