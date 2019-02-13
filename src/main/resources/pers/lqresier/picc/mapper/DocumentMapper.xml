@@ -47,7 +47,7 @@
     </select>
 
     <update id="updateBatchDocument">
-        update tb_document set document_status=#{status},document_use_time=now(),where document_num>=#{beginNum}+0 and #{endNum}+0>=document_num
+        update tb_document set document_status=#{status},document_use_time=now() where document_num>=#{beginNum}+0 and #{endNum}+0>=document_num
     </update>
 
     <select id="getLatestDocument" parameterType="user" resultMap="baseResultMap">

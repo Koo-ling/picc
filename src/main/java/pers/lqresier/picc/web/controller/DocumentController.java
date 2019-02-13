@@ -47,6 +47,7 @@ public class DocumentController {
         try {
             isSuccess = documentService.updateBatchDocument(beginNum, endNum, status);
         } catch (Exception e) {
+            e.printStackTrace();
             logger.debug("批量修改单证失败");
             logger.error("批量修改单证失败");
             return "{\"result\":false,\"tip\":\"修改失败\"}";
@@ -101,7 +102,7 @@ public class DocumentController {
      */
     @ResponseBody
     @RequestMapping("queryDocumentSegVO")
-    public List<DocumentSegVO> queryDocumentSegVO(@RequestParam("beginNum") String beginNum, @RequestParam("endNum") String endNum, @RequestParam("status") int status) {
+    public List<DocumentSegVO> queryDocumentSegVO(@RequestParam(value = "beginNum",required = false) String beginNum, @RequestParam(value = "endNum",required = false) String endNum, @RequestParam(value = "status",required = false) int status) {
         List<DocumentSegVO> segVOList = null;
         try {
             segVOList = documentService.queryDocumentSegVO(beginNum, endNum, status);
@@ -121,12 +122,12 @@ public class DocumentController {
     @RequestMapping("toUpdate")
     public String toUpdate(HttpServletRequest request) {
         String queryString = request.getQueryString();
-        String allocatorName = queryString.split("&")[1].split("=")[1];
-        String userName = queryString.split("&")[2].split("=")[1];
-        String beginNum = queryString.split("&")[3].split("=")[1];
-        String endNum = queryString.split("&")[4].split("=")[1];
-        String nextNum = queryString.split("&")[5].split("=")[1];
-        String allotTime = queryString.split("&")[6].split("=")[1];
+        String allocatorName = queryString.split("&")[0].split("=")[1];
+        String userName = queryString.split("&")[1].split("=")[1];
+        String beginNum = queryString.split("&")[2].split("=")[1];
+        String endNum = queryString.split("&")[3].split("=")[1];
+        String nextNum = queryString.split("&")[4].split("=")[1];
+        String allotTime = queryString.split("&")[5].split("=")[1];
         try {
             request.setAttribute("allocatorName", URLDecoder.decode(allocatorName, "utf-8"));
             request.setAttribute("userName", URLDecoder.decode(userName, "utf-8"));
@@ -138,7 +139,7 @@ public class DocumentController {
             logger.debug("DocumentCommand解码错误");
             logger.error("DocumentCommand解码错误");
         }
-        return "/system/documag/update.jsp";
+        return "system/documag/update.html";
     }
 
 

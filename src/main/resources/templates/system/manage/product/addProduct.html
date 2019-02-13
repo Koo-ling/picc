@@ -89,9 +89,7 @@
 										<select name="product.insuranceId" id="inputInfo4" style="width: 210px">
 											<div th:if="${productTypes}!=null"></div>
 												<option value="" id="">--请选择--</option>
-												<c:forEach var="type" items="${productTypes}">
-													<option th:each="type:${productTypes}" th:value="${type.id}" th:text="${type.name}" value="${type.id}">${type.name}</option>
-												</c:forEach>
+                                                <option th:each="type:${productTypes}" th:value="${type.id}" th:text="${type.name}" value="${type.id}">${type.name}</option>
 										</select>
 									</td>
 								</tr>
@@ -177,7 +175,7 @@
 								<tr>
 									<td style="border: 0"></td>
 									<td style="border: 0">
-										<button type="button" onclick="location.href='${pageContext.servletContext.contextPath }/system/product.action?method=toQueryProduct';" class="btn">
+										<button type="button" onclick="location.href='/system/product/toQueryProduct';" class="btn">
 											返回
 										</button>
 										<button type="reset" class="btn">
@@ -198,16 +196,16 @@
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script type="text/javascript" src="${pageContext.servletContext.contextPath }/res/js/jquery-1.7.2.min.js"></script>
-	<script type="text/javascript" src="${pageContext.servletContext.contextPath }/res/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="${pageContext.servletContext.contextPath }/res/js/formValidator.js"></script>
-	<script type="text/javascript" src="${pageContext.servletContext.contextPath }/res/js/formValidatorRegex.js"></script>
+	<script type="text/javascript" src="/static/res/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/static/res/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/static/res/js/formValidator.js"></script>
+	<script type="text/javascript" src="/static/res/js/formValidatorRegex.js"></script>
 	<!--[if lte IE 6]>
-    <script type="text/javascript" src="${pageContext.servletContext.contextPath }/res/js/bootstrap-ie.js"></script>
+    <script type="text/javascript" src="/static/res/js/bootstrap-ie.js"></script>
     <![endif]-->
 	<!-- IFrame高度自适应 -->
-	<script type="text/javascript" src="${pageContext.servletContext.contextPath }/res/js/iframeAutoSize.js"></script>
-	<script type="text/javascript" src="${pageContext.servletContext.contextPath }/res/js/message.js"></script>
+	<script type="text/javascript" src="/static/res/js/iframeAutoSize.js"></script>
+	<script type="text/javascript" src="/static/res/js/message.js"></script>
 	<script type="text/javascript">
 
 	function GetInitConfigOptions(form, submitId) {
@@ -243,13 +241,13 @@
 			onsuccess: function () {
 				$.ajax({
 					type: "POST",
-					dateType: "json",
-					url: "${pageContext.servletContext.contextPath }/system/product.action?method=addProduct",
+					dataType: "json",
+					url: "/system/product/addProduct",
 					data: $("form:first").serialize(),
 					success: function (data) {
 						if (data != null) {
 							if (data.result == true) {
-								window.location.href = "${pageContext.servletContext.contextPath }/system/product.action?method=toAddProduct&tip=addSuccess"
+								window.location.href = "/system/product/toAddProduct?tip=addSuccess";
 							} else {
 								$.message({
 									message:data.tip,
@@ -302,7 +300,7 @@
 				$.ajax({
 					type: "post",
 					//async:false,//同步
-					url: "${pageContext.servletContext.contextPath }/system/product.action?method=isProductNameExist",
+					url: "/system/product/isProductNameExist",
 					data: { "productName": $('#inputInfo1').val() },
 					success: function (data) {
 						if (data != null) {
@@ -345,7 +343,7 @@
 				$.ajax({
 					type: "post",
 					//async:false,//同步
-					url: "${pageContext.servletContext.contextPath }/system/product.action?method=isProductCodeExist",
+					url: "/system/product/isProductCodeExist",
 					data: { "productCode": $('#inputInfo2').val()},
 					success: function (data) {
 						if (data != null) {
@@ -388,7 +386,7 @@
 				$.ajax({
 					type: "post",
 					async:false,//同步
-					url: "${pageContext.servletContext.contextPath }/system/product.action?method=isDocumentCodeExist",
+					url: "/system/product/isDocumentCodeExist",
 					data: { "documentCode": $('#inputInfo3').val()},
 					success: function (data) {
 						console.log($('#inputInfo3').val())
@@ -531,9 +529,10 @@
 	});
 		
 	</script>
-	<c:if test="${!empty tip }">
-	<script type="text/javascript">
-		var msg='${tip}';
+	<script type="text/javascript" th:inline="javascript" th:if="${tip}!=null">
+        /*<![CDATA[*/
+        var msg = [[${tip}]];
+        /*]]>*/
 		if(msg.indexOf("成功")>-1){
 			$.message({
 				message:msg,
@@ -550,7 +549,6 @@
 			});
 		}
 	</script>
-	</c:if>
 </body>
 
 </html>

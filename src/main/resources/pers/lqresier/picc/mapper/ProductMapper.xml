@@ -90,14 +90,14 @@
             <if test="compensat1!=null">
                 product_compensate1=#{compensat1} and
             </if>
-            <if test="compensate2!=null">
-                product_compensate2=#{compensate2} and
+            <if test="compensat2!=null">
+                product_compensate2=#{compensat2} and
             </if>
-            <if test="compensate3!=null">
-                product_compensate3=#{compensate3} and
+            <if test="compensat3!=null">
+                product_compensate3=#{compensat3} and
             </if>
-            <if test="compensate4!=null">
-                product_compensate4=#{compensate4} and
+            <if test="compensat4!=null">
+                product_compensate4=#{compensat4} and
             </if>
             <if test="productStatus!=null">
                 product_status=#{productStatus} and
@@ -140,13 +140,13 @@
             <if test="compensat1!=null">
                 product_compensate1,
             </if>
-            <if test="compensate2!=null">
+            <if test="compensat2!=null">
                 product_compensate2,
             </if>
-            <if test="compensate3!=null">
+            <if test="compensat3!=null">
                 product_compensate3,
             </if>
-            <if test="compensate4!=null">
+            <if test="compensat4!=null">
                 product_compensate4,
             </if>
             <if test="productStatus!=null">
@@ -181,14 +181,14 @@
             <if test="compensat1!=null">
                 #{compensat1},
             </if>
-            <if test="compensate2!=null">
-                #{compensate2},
+            <if test="compensat2!=null">
+                #{compensat2},
             </if>
-            <if test="compensate3!=null">
-                #{compensate3},
+            <if test="compensat3!=null">
+                #{compensat3},
             </if>
-            <if test="compensate4!=null">
-                #{compensate4},
+            <if test="compensat4!=null">
+                #{compensat4},
             </if>
             <if test="productStatus!=null">
                 #{productStatus},
@@ -225,25 +225,25 @@
             <if test="compensat1!=null">
                 product_compensate1=#{compensat1},
             </if>
-            <if test="compensate2!=null">
-                product_compensate2=#{compensate2},
+            <if test="compensat2!=null">
+                product_compensate2=#{compensat2},
             </if>
-            <if test="compensate3!=null">
-                product_compensate3=#{compensate3},
+            <if test="compensat3!=null">
+                product_compensate3=#{compensat3},
             </if>
-            <if test="compensate4!=null">
-                product_compensate4=#{compensate4},
+            <if test="compensat4!=null">
+                product_compensate4=#{compensat4},
             </if>
             <if test="productStatus!=null">
                 product_status=#{productStatus},
             </if>
-            <if test="type.id!=null">
+            <if test="type!=null and type.id!=null">
                 type_id=#{type.id},
             </if>
         </set>
         where product_id=#{id}
     </update>
-    <select id="query" parameterType="product">
+    <select id="query" parameterType="product" resultMap="baseResultMap">
         select
         <include refid="baseColumns"/>,tb_product_type.type_id,tb_product_type.type_name,tb_product_type.type_code
         from

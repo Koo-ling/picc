@@ -200,7 +200,7 @@ public class ProductController {
         if (isSuccess) {
             String name = null;
             try {
-                name = URLDecoder.decode(request.getQueryString().split("&")[2].split("=")[1], "utf-8");
+                name = URLDecoder.decode(request.getQueryString().split("&")[1].split("=")[1], "utf-8");
             } catch (UnsupportedEncodingException e) {
                 logger.debug("ProductCommand解码错误");
                 logger.error("ProductCommand解码错误");
@@ -215,7 +215,7 @@ public class ProductController {
         } else {
             request.setAttribute("tip", "下架失败");
         }
-        return "/system/product/toQueryProduct";
+        return "forward:/system/product/toQueryProduct";
     }
 
     /**
@@ -231,13 +231,14 @@ public class ProductController {
             isSuccess = productService.putAwayProduct(product);
         } catch (Exception e) {
             isSuccess = false;
+            e.printStackTrace();
             logger.debug("重新上架产品失败");
             logger.error("重新上架产品失败");
         }
         if (isSuccess) {
             String name = null;
             try {
-                name = URLDecoder.decode(request.getQueryString().split("&")[2].split("=")[1], "utf-8");
+                name = URLDecoder.decode(request.getQueryString().split("&")[1].split("=")[1], "utf-8");
             } catch (UnsupportedEncodingException e) {
                 logger.debug("ProductCommand解码错误");
                 logger.error("ProductCommand解码错误");
@@ -252,7 +253,7 @@ public class ProductController {
         } else {
             request.setAttribute("tip", "上架失败");
         }
-        return "/system/product/toQueryProduct";
+        return "forward:/system/product/toQueryProduct";
 
     }
 
@@ -378,8 +379,7 @@ public class ProductController {
         }
         request.setAttribute("productTypes", productTypeList);
         request.setAttribute("product", product);
-        return "/system/manage/product/updateProduct.jsp";
-
+        return "system/manage/product/updateProduct.html";
     }
 
     /**
@@ -421,7 +421,7 @@ public class ProductController {
      */
     @ResponseBody
     @RequestMapping("isProductNameExist")
-    public boolean isProductNameExist(@RequestParam("productName") String name, @RequestParam("id") int id) {
+    public boolean isProductNameExist(@RequestParam(value = "productName",required = false) String name, @RequestParam(value = "id",required = false) Integer id) {
         Product product = new Product();
         product.setName(name);
         product.setId(id);
@@ -445,7 +445,7 @@ public class ProductController {
      */
     @ResponseBody
     @RequestMapping("isProductCodeExist")
-    public boolean isProductCodeExist(@RequestParam("productCode") String code, @RequestParam("id") int id) {
+    public boolean isProductCodeExist(@RequestParam(value = "productCode",required = false) String code, @RequestParam(value = "id",required = false) Integer id) {
         Product product = new Product();
         product.setCode(code);
         product.setId(id);
@@ -469,7 +469,7 @@ public class ProductController {
      */
     @ResponseBody
     @RequestMapping("isDocumentCodeExist")
-    public boolean isDocumentCodeExist(@RequestParam("documentCode") String documentCode, @RequestParam("id") int id) {
+    public boolean isDocumentCodeExist(@RequestParam(value = "documentCode",required = false) String documentCode, @RequestParam(value = "id",required = false) Integer id) {
         Product product = new Product();
         product.setDocumentCode(documentCode);
         product.setId(id);

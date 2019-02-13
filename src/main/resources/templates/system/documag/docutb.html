@@ -49,11 +49,9 @@
                     str['allotTime'] = encodeURIComponent($(this).text());
                 }
             });
-            /*<![CDATA[*/
-            parent.location.href = [[${#request.contextPath}]]+'/system/document/toUpdate?' +
+            parent.location.href = '/system/document/toUpdate?' +
                 'allocatorName=' + str['allocatorName'] + '&userName=' + str['userName'] + '&beginNum=' + str['beginNum'] +
                 '&endNum=' + str['endNum'] + '&nextNum=' + str['nextNum'] + '&allotTime=' + str['allotTime'];
-            /*]]>*/
         }
     </script>
 
@@ -83,7 +81,7 @@
             <td class="data" th:text="${documentVO.nextNum}==null?'无':${documentVO.nextNum}">${empty(documentVO.nextNum)?'无':documentVO.nextNum }</td>
             <td class="data" th:text="${#dates.format(documentVO.allotTime,'yyyy-MM-dd HH:mm:ss')}"></td>
             <td th:text="${documentVO.status}==0?'使用中':'完成'">${documentVO.status==0?'使用中':'完成' }</td>
-            <td id="update"><a th:onclick="send(${iterStat.count})" onclick="send(${i.count})" href="javascript:">修改</a></td>
+            <td id="update"><a th:onclick="'send('+${iterStat.count}+')'" onclick="send(${i.count})" href="javascript:">修改</a></td>
         </tr>
         <tr th:if="${documentVO.status}==1" th:data-value="${iterStat.count}" data-value="${varStatus.count}" class="a-center stop">
             <td class="data" th:text="${documentVO.allocatorName }">${documentVO.allocatorName }</td>
@@ -93,7 +91,7 @@
             <td class="data" th:text="${documentVO.nextNum}==null?'无':${documentVO.nextNum}">${empty(documentVO.nextNum)?'无':documentVO.nextNum }</td>
             <td class="data" th:text="${#dates.format(documentVO.allotTime,'yyyy-MM-dd HH:mm:ss')}"></td>
             <td th:text="${documentVO.status}==0?'使用中':'完成'">${documentVO.status==0?'使用中':'完成' }</td>
-            <td id="update"><a th:onclick="send(${iterStat.count})" onclick="send(${i.count})" href="javascript:">修改</a></td>
+            <td id="update"><a th:onclick="'send('+${iterStat.count}+')'" onclick="send(${i.count})" href="javascript:void(0);">修改</a></td>
         </tr>
     </div>
     <div th:if="${documentVOList}==null">

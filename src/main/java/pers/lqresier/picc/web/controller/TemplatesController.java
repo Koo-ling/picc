@@ -71,4 +71,9 @@ public class TemplatesController {
     public String systemManageLogerLoger(){
         return "system/manage/loger/loger.html";
     }
+
+    @RequestMapping("system/manage/user/addUser")
+    public String systemManageUserAddUser(){
+        return "system/manage/user/addUser.html";
+    }
 }

@@ -62,7 +62,7 @@
             <td th:text="${user.status}==1?'使用中':'停用中'">${user.status==1?'使用中':'停用中' }</td>
             <td>
                 <a th:href="${'javascript:upd('+user.id+')'}" href="javascript:upd(${user.id})">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:if="${user.status}==1" th:href="${'javascript:del('+user.id+','+user.name+')'}"
+                <a th:if="${user.status}==1" th:href="${'javascript:del('+user.id+','''+user.name+''')'}"
                    href="javascript:del('${user.id}','${user.name}')">停用</a>
             </td>
         </tr>
@@ -84,8 +84,8 @@
             <td th:text="${user.status}==1?'使用中':'停用中'">${user.status==1?'使用中':'停用中' }</td>
             <td>
                 <a th:href="${'javascript:upd('+user.id+')'}" href="javascript:upd(${user.id})">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:if="${user.status}==0" th:href="${'javascript:open('+user.id+','+user.name+')'}"
-                   href="javascript:del('${user.id}','${user.name}')">停用</a>
+                <a th:if="${user.status}==0" th:href="${'javascript:open('+user.id+','''+user.name+''')'}"
+                   href="javascript:del('${user.id}','${user.name}')">启用</a>
             </td>
         </tr>
     </div>

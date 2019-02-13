@@ -82,7 +82,7 @@ public class UserController{
 		}else {
 			String name=null;
 			try {
-				name= URLDecoder.decode(request.getQueryString().split("&")[2].split("=")[1],"utf-8");
+				name= URLDecoder.decode(request.getQueryString().split("&")[1].split("=")[1],"utf-8");
 			} catch (UnsupportedEncodingException e) {
 				logger.debug("ProductCommand解码错误");
 				logger.error("ProductCommand解码错误");
@@ -119,7 +119,7 @@ public class UserController{
 		}else {
 			String name=null;
 			try {
-				name=URLDecoder.decode(request.getQueryString().split("&")[2].split("=")[1],"utf-8");
+				name=URLDecoder.decode(request.getQueryString().split("&")[1].split("=")[1],"utf-8");
 			} catch (UnsupportedEncodingException e) {
 				logger.debug("ProductCommand解码错误");
 				logger.error("ProductCommand解码错误");
@@ -181,7 +181,7 @@ public class UserController{
 			logger.error("准备数据到【修改用户】界面失败");
 		}
 		request.setAttribute("user", user);
-		return "/system/manage/user/updateUser.jsp";
+		return "system/manage/user/updateUser.html";
 	}
 
 	/**

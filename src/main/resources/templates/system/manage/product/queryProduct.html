@@ -61,7 +61,7 @@
             <td align="center">
                 <a th:href="${'javascript:upd('+product.id+')'}" href="javascript:upd(${product.id})">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <a th:if="${product.productStatus}==1"
-                   th:href="${'javascript:del('+product.id+','+product.name+');'}"
+                   th:href="${'javascript:del('+product.id+','''+product.name+''');'}"
                    href="javascript:del('${product.id}','${product.name}');">下架</a>&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
         </tr>
@@ -77,8 +77,8 @@
             <td th:if="${product.productStatus}==1">使用中</td>
             <td align="center">
                 <a th:href="${'javascript:upd('+product.id+')'}" href="javascript:upd(${product.id})">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:if="${product.productStatus}==1"
-                   th:href="${'javascript:put('+product.id+','+product.name+');'}"
+                <a th:if="${product.productStatus}!=1"
+                   th:href="${'javascript:put('+product.id+','''+product.name+''');'}"
                    href="javascript:put('${product.id}','${product.name}');">上架</a>&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
         </tr>
