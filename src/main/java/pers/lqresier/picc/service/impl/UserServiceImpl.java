@@ -1,5 +1,6 @@
 package pers.lqresier.picc.service.impl;
 
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -7,6 +8,7 @@ import pers.lqresier.picc.condition.UserCondition;
 import pers.lqresier.picc.entity.User;
 import pers.lqresier.picc.mapper.UserMapper;
 import pers.lqresier.picc.service.UserService;
+import pers.lqresier.picc.utils.EncryptUtil;
 
 import java.util.List;
 
@@ -54,12 +56,16 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean addUser(User user) throws Exception{
+		user.setPassword(EncryptUtil.MD5Encrypt(user.getPassword(),user.getUsername()));
 		userMapper.add(user);
 		return true;
 	}
 
 	@Override
 	public boolean updateUser(User user) throws Exception{
+		if(!"******".equals(user.getPassword())){
+			user.setPassword(EncryptUtil.MD5Encrypt(user.getPassword(),user.getUsername()));
+		}
 		userMapper.update(user);
 		return true;
 	}
