@@ -16,4 +16,9 @@ public class ErrorController {
     public String error_500(){
         return "error/500.html";
     }
+
+    @RequestMapping("403")
+    public String error_403(){
+        return "error/403.html";
+    }
 }

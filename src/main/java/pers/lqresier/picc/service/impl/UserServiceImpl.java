@@ -30,6 +30,18 @@ public class UserServiceImpl implements UserService {
 		return list.get(0);
 	}
 
+	@Override
+	public User login(String username) throws Exception {
+		UserCondition userCondition = new UserCondition();
+		userCondition.setUsername(username);
+		userCondition.setStatus(1);//启用中
+		List<User> list =userMapper.queryByCondition(userCondition);
+		if (list == null || list.size() == 0) {
+			return null;
+		}
+		return list.get(0);
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> queryUserByUserCondition(UserCondition userCondition) throws Exception{

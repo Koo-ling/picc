@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <link rel="stylesheet" type="text/css" href="/static/res/css/theme.css"/>
     <link rel="stylesheet" type="text/css" href="/static/res/css/style.css"/>
@@ -37,8 +37,8 @@
             <div class="nav-collapse collapse">
 
                 <p class="navbar-text pull-right">欢迎使用 PICC湖南省分公司旅意保险出单系统</p>
-                <p class="navbar-text pull-right" th:utext="'您好！ 用户名：'+${session.user.name}+'&nbsp;&nbsp;&nbsp;&nbsp;<a href=\'javascript:logout();\'>退出</a>'">
-                    您好！ 用户名：${user.name }&nbsp;&nbsp;&nbsp;&nbsp;
+                <p class="navbar-text pull-right">
+                    您好！ 用户名：<shiro:principal property='name'/>&nbsp;&nbsp;&nbsp;&nbsp;<a href='javascript:logout();'>退出</a>
                 </p>
 
             </div>

@@ -15,6 +15,14 @@ public interface UserService extends Service{
 	User login(String username, String password) throws Exception;
 
 	/**
+	 * 登录(通过用户名查询启用的用户)
+	 * @param username
+	 * @return
+	 * @throws Exception
+	 */
+	User login(String username) throws Exception;
+
+	/**
 	 * 通过UserCondition查询User
 	 * @param userCondition
 	 * @return
