@@ -81,4 +81,9 @@ public class TemplatesController {
     public String systemManageUserAddUser(){
         return "system/manage/user/addUser.html";
     }
+
+    @RequestMapping("system/manage/product/addProduct")
+    public String systemManageProductAddProduct(){
+        return "system/manage/product/addProduct.html";
+    }
 }

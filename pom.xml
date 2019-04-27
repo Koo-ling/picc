@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pers.lqresier</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>picc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>picc</name>
     <description>picc for Spring Boot</description>

@@ -385,7 +385,7 @@ public class ProductController {
     /**
      * 准备数据到【查询产品】界面
      *
-     * @return
+     * @return   yum yhhuy6hu
      */
     @RequestMapping("toQueryProduct")
     public String toQueryProduct(HttpServletRequest request) {
